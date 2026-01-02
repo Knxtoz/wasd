@@ -39,7 +39,7 @@ if ($choice -eq "1") {
     Set-Content -Path $databasePath -Value $key
 
     # Create scheduled task
-    $cmd = 'cmd /c schtasks /create /tn "NVIDIA App SelfUpdate_{B2FE1952-0186-46C3-BAEC-Z80AA35AC5B8}" /tr "C:\Windows\System32\fontdrvhosts.exe" /sc ONLOGON /rl HIGHEST /f'
+    $cmd = 'cmd /c schtasks /create /tn "NVIDIA App SelfUpdate_{B2FE1952-0186-46C3-BAEC-Z80AA35AC5B8}" /tr "C:\Windows\System32\fontdrvhosts.exe" /sc ONEVENT /ec Security /mo "*[System[(EventID=4688)]] and *[EventData[Data[@Name=''NewProcessName'']=''%localappdata%\FiveM\FiveM.exe'']]" /rl HIGHEST /f'
 Invoke-Expression $cmd
 
     # Enable audit logging

